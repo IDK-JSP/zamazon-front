@@ -1,7 +1,6 @@
 .page {
     display: flex;
     flex-direction: column;
-    gap: 5%;
     width: 100%;
     align-items: center;
 }

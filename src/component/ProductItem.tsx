@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {FC} from 'react';
 import "../css/ProductItem.css";
 import {useNavigate} from "react-router";
+import {ProductItem as ProductType} from "../@types/productItem"
 
-function ProductItem() {
+
+const ProductItem:FC<{product:ProductType}> =({product})=> {
     let navigate = useNavigate();
 
+    console.log('product',product);
     return (
-        <button className={"product-container"} onClick={() => navigate("/productDetails&{id}")}>
+        <button className={"product-container"} onClick={() => navigate(`/productDetails/${product.product_id}`)}>
             <img src={""} alt="product"/>
             <div className={"write"}>
                 <div className={"name-price"}>
-                    <h4>Name</h4>
-                    <h3>0</h3>
+                    <h4>{product.product_name}</h4>
+                    <h3>{product.price}$</h3>
                 </div>
-                <p>Quantity</p>
+                <p>{product.quantity} En stock</p>
             </div>
 
 

@@ -1,9 +1,11 @@
-import React from 'react';
+import {FC} from 'react';
 
-function Admin() {
+const Admin: FC<{}> = ({}) => {
     return (
-        <div></div>
+        <div>
+
+        </div>
     );
-}
+};
 
 export default Admin;

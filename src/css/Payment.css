@@ -1,0 +1,30 @@
+.payment-form{
+    background-color: gray;
+    height: 400px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.payment-form input{
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    border: none;
+}
+.payment-form button{
+    border: none;
+    margin-top: 10px ;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+
+}
+.payment-form button:hover{
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+}
