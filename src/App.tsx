@@ -6,6 +6,8 @@ import Admin from "./pages/Admin";
 import Kart from "./pages/Kart";
 import Details from "./pages/Details";
 import ProductDetails from "./pages/ProductDetails";
+import Payment from "./pages/Payment";
+import LayoutWithBar from "./layout/LayoutWithBar";
 
 
 function App() {
@@ -13,12 +15,15 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/Shop" element={<Shop/>}/>
-                    <Route path="/Details" element={<Details/>}/>
-                    <Route path="/Kart" element={<Kart/>}/>
-                    <Route path="/Admin" element={<Admin/>}/>
-                    <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
-                    <Route path="*" element={<Navigate to="/home" replace/>}/>
+                    <Route element={<LayoutWithBar/>}>
+                        <Route path="/Shop" element={<Shop/>}/>
+                        <Route path="/Details" element={<Details/>}/>
+                        <Route path="/Kart" element={<Kart/>}/>
+                        <Route path="/Admin" element={<Admin/>}/>
+                        <Route path="/Payment" element={<Payment/>}/>
+                        <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
+                        <Route path="*" element={<Navigate to="/home" replace/>}/>
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>

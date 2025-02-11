@@ -1,0 +1,16 @@
+.shop{
+    display: flex;
+    flex-direction: column;
+    gap:5%;
+    width:100%;
+    align-items: center;
+}
+.body{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 3%;
+}

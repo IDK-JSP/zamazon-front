@@ -1,0 +1,33 @@
+.product-container {
+    height: 300px;
+    width: 200px;
+    background: gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+.product-container :hover{
+    cursor: pointer;
+}
+.product-container img{
+    height: 150px;
+    width: 150px;
+    border: 1px solid darkgray;
+}
+.write{
+    width: 150px;
+    height: auto;
+}
+.name-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+.name-price h3{
+    opacity: 0.5;
+}

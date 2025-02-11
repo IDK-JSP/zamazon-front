@@ -1,34 +1,16 @@
 .App{
-  background: rgb(38, 36, 36);
   color: white;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
 }
 body{
   background-color: rgb(38, 36, 36);
 }
-.AppBar{
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  padding: 10px;
 
-}
-.AppBar button{
-  background: none;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  color: white;
-  font-size: 20px;
 
-.test{
-  border-radius: 50px;
-}
-.login-button{
-  border: none;
-  background-color: red;
-}
-}
-.AppBar button:hover{
-  background: black;
-}
+
+
+
 
