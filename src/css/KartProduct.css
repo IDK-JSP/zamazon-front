@@ -1,0 +1,29 @@
+.kart-product {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    width: 100%;
+    justify-content: space-between;
+    background-color: gray;
+    flex-wrap: wrap;
+    padding-block:0;
+    padding-inline:0;
+}
+.kart-product :hover{
+    cursor:pointer;
+}
+.left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.left img{
+    height: 100px;
+    border: 2px solid black;
+    width: 100px;
+}
+.right {
+    display: flex;
+    align-items: center;
+}

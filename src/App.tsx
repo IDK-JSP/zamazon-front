@@ -22,7 +22,7 @@ function App() {
                         <Route path="/Admin" element={<Admin/>}/>
                         <Route path="/Payment" element={<Payment/>}/>
                         <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
-                        <Route path="*" element={<Navigate to="/home" replace/>}/>
+                        <Route path="*" element={<Navigate to="/shop" replace/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>
