@@ -9,7 +9,7 @@
     padding-block:0;
     padding-inline:0;
 }
-.kart-product :hover{
+.kart-product img :hover{
     cursor:pointer;
 }
 .left{

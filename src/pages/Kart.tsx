@@ -1,34 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import KartProduct from "../component/KartProduct";
-import "../css/Kart.css";
 import { useNavigate } from "react-router";
 import { KartContext } from "../App";
-import { ProductItem as ProductType } from "../@types/productItem";
+import "../css/Kart.css"
 
-function Kart() {
-    let navigate = useNavigate();
+const Kart = () => {
+    const navigate = useNavigate();
     const kartContext = useContext(KartContext);
 
-    if (!kartContext) {
-        return <div>Erreur de contexte</div>; // Si le contexte est undefined
-    }
+    if (!kartContext || kartContext.product.length === 0) return <div>Panier vide</div>;
 
     return (
-        <div className={"kart"}>
-            <div className={"product-list"}>
-                {kartContext.product.map((product: ProductType, index: number) => (
-                    <KartProduct key={product.product_id} product={product} quantity={kartContext.quantity[index]} />
+        <div className="kart">
+            <div className="product-list">
+                {kartContext.product.map((product, index) => (
+                    <KartProduct key={product.product_id} product={product} quantity={kartContext.quantity[index]} productIndex={index} />
                 ))}
             </div>
-            {kartContext.product.length === 0 ? (
-                    <div>pannier vide</div>
-            ):(
-                <button onClick={() => navigate("/Payment")}>Valider</button>
-
-            )
-            }
+            <button onClick={() => navigate("/Payment")}>Valider</button>
         </div>
     );
-}
+};
 
 export default Kart;
