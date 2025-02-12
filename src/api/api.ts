@@ -7,7 +7,7 @@ axios.defaults.withCredentials = false;
 
 export const getZamazon = async (url: string, config: object = {}) => {
     try {
-        const response = await axios.get(url, config);
+        const response = await axios.get('http://localhost:8080' + url, config);
         return response.data; // Retourner les résultats de la réponse
     } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);

@@ -1,0 +1,9 @@
+.order-item{
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    height: 100px;
+    background-color: black;
+    align-items: center;
+    border-radius: 10px;
+}

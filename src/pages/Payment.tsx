@@ -19,24 +19,32 @@ const Payment: FC<{}> = ({}) => {
 
                 putZamazon(`/products/${product.product_id}`, updatedProduct)
                     .then(response => {
-                        console.log(`Produit ${product.product_name} mis à jour :`, response);
                     })
                     .catch(error => {
-                        console.error(`Erreur lors de la mise à jour du produit ${product.product_name}:`, error);
                     });
             }
         });
+        createOrders()
     };
-    const createOrders = () => {
-        const data = {
-            email: email,
-            total: total,
+    const createOrders = async () => {
+        try {
+            const data = {
+                email: email,
+                total: total
+            };
+
+            // Attendre la réponse de l'API
+            const response = await postZamazon("/orders", data);
+
+            if (response) {
+                console.log("Commande créée :", response);
+            } else {
+                console.error("Erreur : La réponse est vide.");
+            }
+        } catch (error) {
+            console.error("Erreur lors de la création de la commande :", error);
         }
-        const response = postZamazon("/orders", data);
-        if (response) {
-            console.log(response);
-        }
-    }
+    };
     useEffect(() => {
         let calculatedTotal = 0; // Initialisation de la variable pour stocker le total calculé
 
@@ -49,6 +57,8 @@ const Payment: FC<{}> = ({}) => {
 
     return (
         <div className="payment-form">
+            <title>Paiement</title>
+
             <h2><u>Total à payé : {total}$
             </u></h2>
             <input placeholder={"Votre e-mail"} value={email} onChange={e => setEmail(e.target.value)}/>

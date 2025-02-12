@@ -1,14 +1,20 @@
 import React from 'react';
 import "../css/MyNavBar.css"
 import {useNavigate} from "react-router";
+
+const data =[
+    {page:"Boutique", path:"/Shop"},
+    {page:"Panier", path:"/Kart"},
+    {page:"Commandes",path:"/Orders"},
+    {page:"Admin", path:"/Admin"}];
 function MyNavBar() {
     let navigate = useNavigate();
 
     return (
         <div className={"container"}>
-            <button onClick={()=>navigate("/Shop")}>Shop</button>
-            <button onClick={() => navigate("/Kart")}>Panier</button>
-            <button onClick={() => navigate("/Admin")}>Admin</button>
+            {data.map((item, index) => (
+                <button onClick={()=>navigate(item.path)}>{item.page}</button>
+            ))}
         </div>
     );
 }

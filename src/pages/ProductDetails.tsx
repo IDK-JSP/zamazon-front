@@ -13,7 +13,7 @@ const ProductDetails: FC<{}> = () => {
 
     const fetchData = async () => {
         try {
-            const data = await getZamazon(`http://localhost:8080/products/${id}`);
+            const data = await getZamazon(`/products/${id}`);
 
             if (data) {
                 setProduct(data); // Mise à jour de l'état avec les données du produit
@@ -37,10 +37,11 @@ const ProductDetails: FC<{}> = () => {
 
     return (
         <div className={"product-details"}>
+            <title>{product.product_name}</title>
             {/* Afficher l'image du produit avec son alt */}
             <img
                 alt={`Image du produit : ${product?.product_name}`}
-                src={product?.poster_path} // Assure-toi que product?.poster_path contient l'URL de l'image
+                src="../../public/chargement-removebg-preview.png" // Assure-toi que product?.poster_path contient l'URL de l'image
                 className="product-image" // Applique une classe CSS pour définir la taille de l'image
             />
             <div>{product?.product_name}</div>

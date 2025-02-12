@@ -1,8 +1,10 @@
-import {FC} from 'react';
+import React, {FC} from 'react';
 
 const Admin: FC<{}> = ({}) => {
     return (
+
         <div>
+            <title>Admin</title>
 
         </div>
     );

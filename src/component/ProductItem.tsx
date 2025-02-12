@@ -13,7 +13,7 @@ const ProductItem: FC<{ product: ProductType }> = ({product}) => {
             product.quantity > 0 ? (
                 <button className={"product-container"}
                         onClick={() => navigate(`/productDetails/${product.product_id}`)}>
-                    <img src={""} alt="product"/>
+                    <img src={"chargement-removebg-preview.png"} alt="product"/>
                     <div className={"write"}>
                         <div className={"name-price"}>
                             <h4>{product.product_name}</h4>

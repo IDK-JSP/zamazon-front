@@ -6,9 +6,10 @@ import {ProductItem as ProductType} from "../@types/productItem"
 
 const Shop:FC<{}>=()=> {
     const [productCollection, setProductCollection] = React.useState<ProductType[]>([]);
+    const [productName, setProductName] = React.useState<string>("");
     const fetchData = async () => {
         try {
-            const data = await getZamazon("http://localhost:8080/products/all");
+            const data = await getZamazon("/products/all");
 
             if (data) {
                 console.log('data',data); // Afficher les données récupérées
@@ -30,6 +31,7 @@ const Shop:FC<{}>=()=> {
     }, []);
     return (
         <div className={"shop"}>
+            <title>Boutique</title>
             <div className={"body"}>
                 {productCollection.map((product:any) => (
                     <ProductItem key={product.product_id} product={product}/>

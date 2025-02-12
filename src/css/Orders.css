@@ -1,0 +1,7 @@
+.order-list{
+    justify-content: center;
+    gap: 1rem;
+}
+.order-list th, td{
+    border: 1.5px solid pink;
+}

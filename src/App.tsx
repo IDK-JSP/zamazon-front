@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Payment from "./pages/Payment";
 import LayoutWithBar from "./layout/LayoutWithBar";
 import {ProductItem as ProductType} from "./@types/productItem";
+import Orders from "./pages/Orders";
 
 export const KartContext = createContext<KartContext | undefined>(undefined);
 
@@ -32,6 +33,7 @@ function App() {
                             <Route path="/Kart" element={<Kart/>}/>
                             <Route path="/Admin" element={<Admin/>}/>
                             <Route path="/Payment" element={<Payment/>}/>
+                            <Route path="/Orders" element={<Orders/>}/>
                             <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
                             <Route path="*" element={<Navigate to="/shop" replace/>}/>
                         </Route>
