@@ -9,6 +9,7 @@ const ProductDetails: FC<{}> = () => {
     const location = useLocation();
     const id = location.pathname.split('/').pop();
     const [product, setProduct] = useState<ProductType | undefined>(undefined);
+    const [selectedQuantity, setSelectedQuantity] = useState(1); // Stocke la valeur sélectionnée
 
     const fetchData = async () => {
         try {
@@ -30,6 +31,9 @@ const ProductDetails: FC<{}> = () => {
         };
         loadData();
     }, [id]); // Effectue une nouvelle récupération des données si l'ID change
+    if (!product) {
+        return <div>Chargement...</div>; // Ou un message d'erreur en attendant le produit
+    }
 
     return (
         <div className={"product-details"}>
@@ -42,10 +46,8 @@ const ProductDetails: FC<{}> = () => {
             <div>{product?.product_name}</div>
 
             {/* Select pour choisir la quantité */}
-            <select>
-                {/* Générer dynamiquement les options en fonction de la quantité */}
+            <select value={selectedQuantity} onChange={(e) => setSelectedQuantity(Number(e.target.value))} >
                 {product?.quantity ?
-                    // Création des options de 1 à la quantité disponible
                     Array.from({length: product.quantity}, (_, i) => (
                         <option key={i} value={i + 1}>
                             {i + 1}
@@ -57,7 +59,8 @@ const ProductDetails: FC<{}> = () => {
             </select>
 
             {/* Composant pour ajouter au panier */}
-            <AddToKart product={product} quantity={product?.quantity}/>
+            <AddToKart product={product} quantity={selectedQuantity} />
+
         </div>
     );
 };

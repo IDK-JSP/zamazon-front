@@ -14,37 +14,28 @@ export const getZamazon = async (url: string, config: object = {}) => {
         return null; // Retourner null en cas d'erreur
     }
 };
-
-
-export const get = (url: string, config: any = {}) => {
-    const defParams = {
-        api_key: "2bc9a7883ffe9f225bee010bee3d0f67", // ta clé API
-        include_adult: false,
-        include_video: false,
-        language: "fr-FR",
-    };
-
-    // Fusionner les paramètres par défaut avec ceux passés dans `config`
-    const finalConfig = {
-        ...config,
-        params: {
-            ...defParams, // paramètres par défaut
-            ...config.params, // paramètres supplémentaires
-        },
-    };
-
-    // Vérification de l'URL
-    const baseUrl = 'https://api.themoviedb.org/3'; // URL de base de l'API externe
-
-    return axios.get(baseUrl + url, finalConfig)
+export const postZamazon = (url: string, data: any, config: any = {}) => {
+    // Si un token est fourni, on ajoute le header Authorization
+    return axios.post('http://localhost:8080' + url, data, config)
         .then((response) => {
-            return response.data; // Retourner les données de la réponse
+            return response.data;
         })
-        .catch((error) => {
-            console.error(error);
-            // Traiter l'erreur si nécessaire
+        .catch(error => {
+            return { success: false, message: error.response?.data || "Erreur de connexion" };
         });
 };
+export const putZamazon = (url: string, data: any, config: any = {}) => {
+    return axios.put('http://localhost:8080' + url, data, config)
+        .then((response) => {
+            return response.data;
+        })
+        .catch(error => {
+            return { success: false, message: error.response?.data || "Erreur de connexion" };
+        });
+}
+
+
+
 
 
 
