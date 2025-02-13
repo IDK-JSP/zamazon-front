@@ -5,8 +5,9 @@ import {Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography} from '@mui
 
 const data =[
     {page:"Boutique", path:"/Shop"},
+    {page: "Recherche", path: "/Research"},
     {page:"Panier", path:"/Kart"},
-    {page:"Admin", path:"/Admin"}];
+    {page:"Admin", path:"/Admin"},];
 function MyNavBar() {
     let navigate = useNavigate();
     const [anchorElUser, setAnchorElUser] = React.useState(null);

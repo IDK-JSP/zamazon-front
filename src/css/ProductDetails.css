@@ -1,10 +1,21 @@
 .product-details{
-    background-color: gray;
     height: 400px;
-    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .product-details img{
-    width: 150px;
-    height: 150px;
     border: 1px solid black;
+    height: 60%;
+    background-color: gray;
+}
+.name-quantity{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.product-details-write{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

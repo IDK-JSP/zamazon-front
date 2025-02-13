@@ -8,14 +8,23 @@ import ProductDetails from "./pages/ProductDetails";
 import Payment from "./pages/Payment";
 import LayoutWithBar from "./layout/LayoutWithBar";
 import {ProductItem as ProductType} from "./@types/productItem";
-import Orders from "./pages/Orders";
 import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
+import Research from "./pages/Recherche";
+import Recherche from "./pages/Recherche";
 
 export const KartContext = createContext<KartContext | undefined>(undefined);
 export const EmailContext = createContext<EmailContext | undefined>(undefined);
+export const ProductContext = createContext<ProductContext | undefined>(undefined);
 
 interface KartContext {
+    product: ProductType[];
+    setProduct: (product: ProductType[]) => void;
+    quantity: number[];
+    setQuantity: (quantity: number[]) => void;
+}
+
+interface ProductContext {
     product: ProductType[];
     setProduct: (product: ProductType[]) => void;
     quantity: number[];
@@ -36,19 +45,21 @@ function App() {
             <BrowserRouter>
                 <KartContext.Provider value={{product, setProduct, quantity, setQuantity}}>
                     <EmailContext.Provider value={{email, setEmail}}>
-                        <Routes>
-                            <Route element={<LayoutWithBar/>}>
-                                <Route path="/Register" element={<Register/>}/>
-                                <Route path="/LogIn" element={<LogIn/>}/>
-                                <Route path="/Shop" element={<Shop/>}/>
-                                <Route path="/Kart" element={<Kart/>}/>
-                                <Route path="/Admin" element={<Admin/>}/>
-                                <Route path="/Payment" element={<Payment/>}/>
-                                <Route path="/Orders" element={<Orders/>}/>
-                                <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
-                                <Route path="*" element={<Navigate to="/shop" replace/>}/>
-                            </Route>
-                        </Routes>
+                        <ProductContext.Provider value={{product, setProduct, quantity, setQuantity}}>
+                            <Routes>
+                                <Route element={<LayoutWithBar/>}>
+                                    <Route path="/Register" element={<Register/>}/>
+                                    <Route path="/LogIn" element={<LogIn/>}/>
+                                    <Route path="/Research" element={<Recherche/>}/>
+                                    <Route path="/Shop" element={<Shop/>}/>
+                                    <Route path="/Kart" element={<Kart/>}/>
+                                    <Route path="/Admin" element={<Admin/>}/>
+                                    <Route path="/Payment" element={<Payment/>}/>
+                                    <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
+                                    <Route path="*" element={<Navigate to="/shop" replace/>}/>
+                                </Route>
+                            </Routes>
+                        </ProductContext.Provider>
                     </EmailContext.Provider>
                 </KartContext.Provider>
             </BrowserRouter>

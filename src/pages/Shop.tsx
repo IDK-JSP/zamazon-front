@@ -7,7 +7,6 @@ import {EmailContext} from "../App";
 
 const Shop:FC<{}>=()=> {
     const [productCollection, setProductCollection] = React.useState<ProductType[]>([]);
-
     // Fonction pour récupérer tous les produits dans la base de données
     const fetchData = async () => {
         try {

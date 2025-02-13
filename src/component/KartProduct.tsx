@@ -35,18 +35,22 @@ const KartProduct: FC<{ product: ProductType; quantity: number; productIndex: nu
                 <img src="" alt="product" onClick={() => navigate(`/ProductDetails/${product.product_id}`)} />
                 <div className="kart-write">
                     <h4>{product.product_name}</h4>
-                    <h5>Quantité: {selectedQuantity}</h5>
+                    <article className={"quantity"}>
+
+                    <h5>Quantité: </h5>
+                    <select value={selectedQuantity} onChange={handleQuantityChange}>
+                        {Array.from({length: product.quantity}, (_, i) => (
+                            <option key={i} value={i + 1}>
+                                {i + 1}
+                            </option>
+                        ))}
+                    </select>
+                    </article>
                 </div>
-                <select value={selectedQuantity} onChange={handleQuantityChange}>
-                    {Array.from({ length: product.quantity }, (_, i) => (
-                        <option key={i} value={i + 1}>
-                            {i + 1}
-                        </option>
-                    ))}
-                </select>
-                <button onClick={handleRemove}>Supprimer</button>
+
             </div>
             <div className="right">
+                <button onClick={handleRemove}>X</button>
                 <h3>Total : {(product.price * selectedQuantity).toFixed(2)}$</h3>
             </div>
         </div>

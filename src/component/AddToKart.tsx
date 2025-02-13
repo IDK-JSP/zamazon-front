@@ -1,9 +1,12 @@
 import React, {FC, useContext} from "react";
 import {ProductItem as ProductType} from "../@types/productItem";
 import {KartContext} from "../App";
+import {useNavigate} from "react-router";
 
 const AddToKart: FC<{ product: ProductType; quantity: number }> = ({product, quantity}) => {
     const kartContext = useContext(KartContext);
+    let navigate = useNavigate();
+
     if (!kartContext) return null;
 
     const {product: kartProducts, setProduct, quantity: kartQuantities, setQuantity} = kartContext;
@@ -14,7 +17,7 @@ const AddToKart: FC<{ product: ProductType; quantity: number }> = ({product, qua
         const updatedKartQuantities = [...kartQuantities];
 
         const existingProductIndex = kartProducts.findIndex((p) => p.product_id === product.product_id);
-    //Si le produit est déjà dans le panier, on ne modifie que la quantité
+        //Si le produit est déjà dans le panier, on ne modifie que la quantité
         if (existingProductIndex !== -1) {
             updatedKartQuantities[existingProductIndex] = quantity;
         } else {
@@ -23,8 +26,8 @@ const AddToKart: FC<{ product: ProductType; quantity: number }> = ({product, qua
         }
         setProduct(updatedKartProducts);
         setQuantity(updatedKartQuantities);
-        console.log(updatedKartQuantities);
-        console.log(updatedKartProducts);
+        navigate("/Shop")
+
     };
 
     return <button onClick={handleAddToKart}>Ajouter au panier</button>;

@@ -9,15 +9,11 @@ const ProductDetails: FC<{}> = () => {
     const location = useLocation();
     const id = location.pathname.split('/').pop();
     const [product, setProduct] = useState<ProductType | undefined>(undefined);
-    const [selectedQuantity, setSelectedQuantity] = useState(1);
-
-    /* Fonction pour récupérer les détails d'un produit, oui j'aurais pu le passer en props,
-       mais comme ça je n'aurais pas créé un endpoint pour rien*/
+    const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
 
     const fetchData = async () => {
         try {
             const data = await getZamazon(`/products/${id}`);
-
             if (data) {
                 setProduct(data);
             } else {
@@ -34,6 +30,7 @@ const ProductDetails: FC<{}> = () => {
         };
         loadData();
     }, [id]);
+
     if (!product) {
         return <div>Chargement...</div>;
     }
@@ -43,28 +40,32 @@ const ProductDetails: FC<{}> = () => {
             <title>{product.product_name}</title>
             <img
                 alt={`Image du produit : ${product?.product_name}`}
-                src="../../public/chargement-removebg-preview.png"
+                src={""}
                 className="product-image"
             />
-            <div>{product?.product_name}</div>
+            <article className={"product-details-write"}>
+                <aside className={"name-quantity"}>
+                    <div>{product?.product_name}</div>
+                    <select
+                        value={selectedQuantity}
+                        onChange={(e) => setSelectedQuantity(Number(e.target.value))}
+                    >
+                        {product?.quantity && product.quantity > 0 ? (
+                            Array.from({length: product.quantity}, (_, i) => (
+                                <option key={i} value={i + 1}>
+                                    {i + 1}
+                                </option>
+                            ))
+                        ) : (
+                            <option value="0">Quantité non disponible</option>
+                        )}
+                    </select>
+                </aside>
+                <div>{product.price}$</div>
+                <div>{product?.description}</div>
+            </article>
 
-            <select
-                value={selectedQuantity}
-                onChange={(e) => setSelectedQuantity(Number(e.target.value))} >
-                {product?.quantity ?
-                    Array.from({length: product.quantity}, (_, i) => (
-                        <option key={i} value={i + 1}>
-                            {i + 1}
-                        </option>
-                    )) : (
-                        <option value="0">Quantité non disponible</option>
-                    )
-                }
-            </select>
-
-            {/* Composant pour ajouter au panier */}
-            <AddToKart product={product} quantity={selectedQuantity} />
-
+            <AddToKart product={product} quantity={selectedQuantity}/>
         </div>
     );
 };

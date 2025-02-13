@@ -1,3 +1,7 @@
+.gif{
+    width:80vh;
+    border-radius: 10px;
+}
 .kart{
     width: 100%;
     height: auto;
@@ -11,4 +15,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.button{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.validation:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+.empty{
+    background-color: lightcoral;
+}
+.empty:hover{
+    background-color: red;
+    cursor: pointer;
 }

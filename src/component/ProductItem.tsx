@@ -13,7 +13,7 @@ const ProductItem: FC<{ product: ProductType }> = ({product}) => {
             product.quantity > 0 ? (
                 <button className={"product-container"}
                         onClick={() => navigate(`/productDetails/${product.product_id}`)}>
-                    <img src={""} alt={"Image de "+product.product_name}/>
+                    <img src={"https://gifdb.com/images/high/fortnite-dances-216-x-206-gif-n8eo9q2brnktm3d6.gif"} alt={"Image de "+product.product_name}/>
                     <div className={"write"}>
                         <div className={"name-price"}>
                             <h4>{product.product_name}</h4>
