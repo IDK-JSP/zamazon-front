@@ -9,9 +9,10 @@ import Payment from "./pages/Payment";
 import LayoutWithBar from "./layout/LayoutWithBar";
 import {ProductItem as ProductType} from "./@types/productItem";
 import Orders from "./pages/Orders";
+import Register from "./pages/Register";
 
 export const KartContext = createContext<KartContext | undefined>(undefined);
-
+export const EmailContext = createContext<EmailContext | undefined>(undefined);
 
 interface KartContext {
     product: ProductType[];
@@ -20,24 +21,33 @@ interface KartContext {
     setQuantity: (quantity: number[]) => void;
 }
 
+interface EmailContext {
+    email: string;
+    setEmail: (email: string) => void;
+}
+
 function App() {
     const [product, setProduct] = useState<ProductType[]>([]);
     const [quantity, setQuantity] = useState<number[]>([]);
+    const [email, setEmail] = useState<string>("");
     return (
         <div className="App">
             <BrowserRouter>
                 <KartContext.Provider value={{product, setProduct, quantity, setQuantity}}>
-                    <Routes>
-                        <Route element={<LayoutWithBar/>}>
-                            <Route path="/Shop" element={<Shop/>}/>
-                            <Route path="/Kart" element={<Kart/>}/>
-                            <Route path="/Admin" element={<Admin/>}/>
-                            <Route path="/Payment" element={<Payment/>}/>
-                            <Route path="/Orders" element={<Orders/>}/>
-                            <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
-                            <Route path="*" element={<Navigate to="/shop" replace/>}/>
-                        </Route>
-                    </Routes>
+                    <EmailContext.Provider value={{email, setEmail}}>
+                        <Routes>
+                            <Route element={<LayoutWithBar/>}>
+                                <Route path="/Register" element={<Register/>}/>
+                                <Route path="/Shop" element={<Shop/>}/>
+                                <Route path="/Kart" element={<Kart/>}/>
+                                <Route path="/Admin" element={<Admin/>}/>
+                                <Route path="/Payment" element={<Payment/>}/>
+                                <Route path="/Orders" element={<Orders/>}/>
+                                <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
+                                <Route path="*" element={<Navigate to="/shop" replace/>}/>
+                            </Route>
+                        </Routes>
+                    </EmailContext.Provider>
                 </KartContext.Provider>
             </BrowserRouter>
         </div>

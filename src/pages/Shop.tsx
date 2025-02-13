@@ -1,18 +1,20 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useContext, useEffect} from 'react';
 import ProductItem from "../component/ProductItem";
 import "../css/Shop.css"
 import {getZamazon} from "../api/api";
 import {ProductItem as ProductType} from "../@types/productItem"
+import {EmailContext} from "../App";
 
 const Shop:FC<{}>=()=> {
     const [productCollection, setProductCollection] = React.useState<ProductType[]>([]);
     const [productName, setProductName] = React.useState<string>("");
+    const emailContext = useContext(EmailContext);
+
     const fetchData = async () => {
         try {
             const data = await getZamazon("/products/all");
 
             if (data) {
-                console.log('data',data); // Afficher les données récupérées
                 setProductCollection(data);
             } else {
                 console.log("Aucune donnée disponible.");
@@ -37,6 +39,7 @@ const Shop:FC<{}>=()=> {
                     <ProductItem key={product.product_id} product={product}/>
                 ))}
             </div>
+            <button onClick={()=>console.log(emailContext?.email)}>test</button>
         </div>
     );
 }

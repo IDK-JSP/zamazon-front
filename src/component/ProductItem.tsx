@@ -7,7 +7,7 @@ import {ProductItem as ProductType} from "../@types/productItem"
 const ProductItem: FC<{ product: ProductType }> = ({product}) => {
     let navigate = useNavigate();
 
-    console.log('product', product);
+
     return (
 
             product.quantity > 0 ? (
