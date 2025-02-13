@@ -9,6 +9,7 @@ const Payment: FC<{}> = ({}) => {
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState(0);
     const kartContext = useContext(KartContext);
+    const [orderId, setOrderId] = useState();
     const emailContext = useContext(EmailContext);
 
     // Fonction pour modifier la quantité du produit dans la base de données en fonction de la quantité présente dans le panier
@@ -37,15 +38,35 @@ const Payment: FC<{}> = ({}) => {
             };
             const response = await postZamazon("/orders", data);
             if (response) {
-                console.log("Commande créée :", response);
+                console.log("Commande créée :", response.order_id);
+                setOrderId(response.order_id)
                 kartContext?.setProduct([]);
+                kartContext?.setQuantity([])
             } else {
                 console.error("Erreur : La réponse est vide.");
             }
         } catch (error) {
             console.error("Erreur lors de la création de la commande :", error);
         }
+        createOrdersContent();
     };
+    const createOrdersContent = () => {
+        kartContext?.product.forEach((p, index) => {
+            const data = {
+                order_id: orderId, // L'id de la commande, peut être dynamique selon l'id de la commande créée
+                product_id: p.product_id,
+                quantity: kartContext.quantity[index]
+            };
+            postZamazon("/orderContent", data)
+                .then(response => {
+                    console.log("Order content added successfully", response);
+                })
+                .catch(error => {
+                    console.error("Error while adding order content", error);
+                });
+        });
+    };
+
     useEffect(() => {
         let calculatedTotal = 0;
         kartContext?.product.forEach((product: ProductType, index: number) => {
