@@ -1,8 +1,7 @@
 import React, {FC, useState} from 'react';
 import {getZamazon} from "../api/api";
 import {OrderItem as OrderType} from "../@types/orderItem"
-import OrderItem from "../component/OrderItem";
-import "../css/Orders.css"
+import "../css/Admin.css"
 
 const Orders: FC<{}> = ({}) => {
     const [email, setEmail] = useState<string>();

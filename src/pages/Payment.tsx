@@ -1,7 +1,7 @@
 import React, {FC, useContext, useEffect, useState} from 'react';
 import {ProductItem as ProductType} from "../@types/productItem";
 import KartProduct from "../component/KartProduct";
-import {KartContext} from "../App";
+import {EmailContext, KartContext} from "../App";
 import {postZamazon, putZamazon} from "../api/api";
 
 
@@ -9,6 +9,8 @@ const Payment: FC<{}> = ({}) => {
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState(0);
     const kartContext = useContext(KartContext);
+    const emailContext = useContext(EmailContext);
+
 
     const updateQuantity = () => {
         kartContext?.product.forEach((product, index) => {
@@ -38,6 +40,7 @@ const Payment: FC<{}> = ({}) => {
 
             if (response) {
                 console.log("Commande créée :", response);
+                kartContext?.setProduct([]);
             } else {
                 console.error("Erreur : La réponse est vide.");
             }
@@ -61,6 +64,7 @@ const Payment: FC<{}> = ({}) => {
 
             <h2><u>Total à payé : {total}$
             </u></h2>
+
             <input placeholder={"Votre e-mail"} value={email} onChange={e => setEmail(e.target.value)}/>
             <button onClick={updateQuantity}>Valider le payment</button>
         </div>

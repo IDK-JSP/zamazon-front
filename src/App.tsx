@@ -10,6 +10,7 @@ import LayoutWithBar from "./layout/LayoutWithBar";
 import {ProductItem as ProductType} from "./@types/productItem";
 import Orders from "./pages/Orders";
 import Register from "./pages/Register";
+import LogIn from "./pages/LogIn";
 
 export const KartContext = createContext<KartContext | undefined>(undefined);
 export const EmailContext = createContext<EmailContext | undefined>(undefined);
@@ -38,6 +39,7 @@ function App() {
                         <Routes>
                             <Route element={<LayoutWithBar/>}>
                                 <Route path="/Register" element={<Register/>}/>
+                                <Route path="/LogIn" element={<LogIn/>}/>
                                 <Route path="/Shop" element={<Shop/>}/>
                                 <Route path="/Kart" element={<Kart/>}/>
                                 <Route path="/Admin" element={<Admin/>}/>
