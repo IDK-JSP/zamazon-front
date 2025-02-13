@@ -1,6 +1,7 @@
 import React from 'react';
 import "../css/MyNavBar.css"
 import {useNavigate} from "react-router";
+import {Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography} from '@mui/material';
 
 const data =[
     {page:"Boutique", path:"/Shop"},
@@ -8,12 +9,55 @@ const data =[
     {page:"Admin", path:"/Admin"}];
 function MyNavBar() {
     let navigate = useNavigate();
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    // Pour le composant MUI (menu déroulant de connexion et d'inscription)
+    const handleOpenUserMenu = (event: any) => {
+        setAnchorElUser(event.currentTarget);
+    };
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+    const pages = [{name: "Connexion", path: "/LogIn"},
+        {name: "Inscription", path: "/Register"}];
 
     return (
         <div className={"container"}>
             {data.map((item, index) => (
                 <button onClick={()=>navigate(item.path)}>{item.page}</button>
             ))}
+            <Box sx={{flexGrow: 0}}>
+                <Tooltip title="Profile">
+                    <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
+                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                    </IconButton>
+                </Tooltip>
+                <Menu
+                    sx={{mt: '45px'}}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                >
+                    {pages.map((page) => (
+                        <MenuItem onClick={() => {
+                            navigate(page.path);
+                            handleCloseUserMenu();
+                        }} key={page.name}>
+                            <Typography sx={{textAlign: 'center'}}><b>{page.name}</b></Typography>
+                        </MenuItem>
+                    ))}
+                </Menu>
+            </Box>
         </div>
     );
 }

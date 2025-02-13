@@ -11,13 +11,13 @@ const Payment: FC<{}> = ({}) => {
     const kartContext = useContext(KartContext);
     const emailContext = useContext(EmailContext);
 
-
+    // Fonction pour modifier la quantité du produit dans la base de données en fonction de la quantité présente dans le panier
     const updateQuantity = () => {
         kartContext?.product.forEach((product, index) => {
             const quantityToUpdate = kartContext?.quantity[index];
 
             if (product && quantityToUpdate && quantityToUpdate <= product.quantity) {
-                const updatedProduct = { ...product, quantity: product.quantity - quantityToUpdate };
+                const updatedProduct = {...product, quantity: product.quantity - quantityToUpdate};
 
                 putZamazon(`/products/${product.product_id}`, updatedProduct)
                     .then(response => {
@@ -28,16 +28,14 @@ const Payment: FC<{}> = ({}) => {
         });
         createOrders()
     };
+    // Fonction pour créer une commande dans la base de données
     const createOrders = async () => {
         try {
             const data = {
                 email: email,
                 total: total
             };
-
-            // Attendre la réponse de l'API
             const response = await postZamazon("/orders", data);
-
             if (response) {
                 console.log("Commande créée :", response);
                 kartContext?.setProduct([]);
@@ -49,13 +47,11 @@ const Payment: FC<{}> = ({}) => {
         }
     };
     useEffect(() => {
-        let calculatedTotal = 0; // Initialisation de la variable pour stocker le total calculé
-
+        let calculatedTotal = 0;
         kartContext?.product.forEach((product: ProductType, index: number) => {
             calculatedTotal += product.price * kartContext.quantity[index];
         });
-
-        setTotal(Number(calculatedTotal.toFixed(2))); // Mise à jour de l'état total après avoir fait la somme
+        setTotal(Number(calculatedTotal.toFixed(2)));
     }, []);
 
     return (

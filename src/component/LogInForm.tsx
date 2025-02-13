@@ -10,20 +10,20 @@ const LogInForm: FC<{}> = ({}) => {
     const navigate = useNavigate();
     const emailContext = useContext(EmailContext);
 
-
+    //Fonction pour se connecter
     const handleLogIn= () => {
         const data = {
             email: email,
             password: password
         }
+    // Vérifie que les champs email et mot de passe ne sont pas vides, et fait la requête en fonction des données
         if (email && password != undefined) {
             postZamazon("/auth/login", data)
                 .then((message) => {
-                    if (message) {
-                        console.log(message)
+                    if (typeof (message)=== "string") {
+                        // Si la connexion est réussie, on enregistre l'email dans un contexte
                         emailContext?.setEmail(email)
-                        /*navigate('/Shop')
-                        emailContext?.setEmail(email);*/
+                        navigate('/Shop')
                     } else {
                         alert("Mauvais identifiants")
                     }
@@ -40,7 +40,7 @@ const LogInForm: FC<{}> = ({}) => {
         <div className={"register-form"}>
             <input placeholder={"E-mail"} value={email} onChange={(e) => setEmail(e.target.value)}/>
             <input placeholder={"Mot de passe"} type={"password"} onChange={(e) => setPassword(e.target.value)}/>
-            <button onClick={handleLogIn}>Inscription</button>
+            <button onClick={handleLogIn}>Connexion</button>
         </div>
     );
 };

@@ -9,14 +9,17 @@ const ProductDetails: FC<{}> = () => {
     const location = useLocation();
     const id = location.pathname.split('/').pop();
     const [product, setProduct] = useState<ProductType | undefined>(undefined);
-    const [selectedQuantity, setSelectedQuantity] = useState(1); // Stocke la valeur sélectionnée
+    const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+    /* Fonction pour récupérer les détails d'un produit, oui j'aurais pu le passer en props,
+       mais comme ça je n'aurais pas créé un endpoint pour rien*/
 
     const fetchData = async () => {
         try {
             const data = await getZamazon(`/products/${id}`);
 
             if (data) {
-                setProduct(data); // Mise à jour de l'état avec les données du produit
+                setProduct(data);
             } else {
                 console.log("Aucune donnée disponible.");
             }
@@ -30,24 +33,24 @@ const ProductDetails: FC<{}> = () => {
             await fetchData();
         };
         loadData();
-    }, [id]); // Effectue une nouvelle récupération des données si l'ID change
+    }, [id]);
     if (!product) {
-        return <div>Chargement...</div>; // Ou un message d'erreur en attendant le produit
+        return <div>Chargement...</div>;
     }
 
     return (
         <div className={"product-details"}>
             <title>{product.product_name}</title>
-            {/* Afficher l'image du produit avec son alt */}
             <img
                 alt={`Image du produit : ${product?.product_name}`}
-                src="../../public/chargement-removebg-preview.png" // Assure-toi que product?.poster_path contient l'URL de l'image
-                className="product-image" // Applique une classe CSS pour définir la taille de l'image
+                src="../../public/chargement-removebg-preview.png"
+                className="product-image"
             />
             <div>{product?.product_name}</div>
 
-            {/* Select pour choisir la quantité */}
-            <select value={selectedQuantity} onChange={(e) => setSelectedQuantity(Number(e.target.value))} >
+            <select
+                value={selectedQuantity}
+                onChange={(e) => setSelectedQuantity(Number(e.target.value))} >
                 {product?.quantity ?
                     Array.from({length: product.quantity}, (_, i) => (
                         <option key={i} value={i + 1}>

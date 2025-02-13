@@ -7,6 +7,8 @@ const Admin: FC<{}> = ({}) => {
     const [email, setEmail] = useState<string>();
     const [orders, setOrders] = useState<OrderType[]>([]);
     const emailContext = useContext(EmailContext);
+
+    // Fonction qui effectue la recherche des commandes dans la base de données en fonction de l'email présent dans le contexte
     const recherche = async () => {
         if (emailContext?.email){
             const response = getZamazon(`/orders/search?query=${emailContext?.email}`);

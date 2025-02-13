@@ -13,6 +13,7 @@ const KartProduct: FC<{ product: ProductType; quantity: number; productIndex: nu
 
     const { product: kartProducts, setProduct, quantity: kartQuantities, setQuantity } = kartContext;
 
+    // Le <select> permet de modifier la quantité du produit dans le panier (context)
     const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newQuantity = Number(e.target.value);
         setSelectedQuantity(newQuantity);
@@ -20,7 +21,7 @@ const KartProduct: FC<{ product: ProductType; quantity: number; productIndex: nu
         updatedQuantities[productIndex] = newQuantity;
         setQuantity(updatedQuantities);
     };
-
+    //Pour supprimer un élément du panier(context)
     const handleRemove = () => {
         const updatedProducts = kartProducts.filter((_, i) => i !== productIndex);
         const updatedQuantities = kartQuantities.filter((_, i) => i !== productIndex);

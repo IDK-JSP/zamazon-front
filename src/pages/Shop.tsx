@@ -7,9 +7,8 @@ import {EmailContext} from "../App";
 
 const Shop:FC<{}>=()=> {
     const [productCollection, setProductCollection] = React.useState<ProductType[]>([]);
-    const [productName, setProductName] = React.useState<string>("");
-    const emailContext = useContext(EmailContext);
 
+    // Fonction pour récupérer tous les produits dans la base de données
     const fetchData = async () => {
         try {
             const data = await getZamazon("/products/all");
@@ -39,7 +38,6 @@ const Shop:FC<{}>=()=> {
                     <ProductItem key={product.product_id} product={product}/>
                 ))}
             </div>
-            <button onClick={()=>console.log(emailContext?.email)}>test</button>
         </div>
     );
 }

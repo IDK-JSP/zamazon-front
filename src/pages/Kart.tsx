@@ -8,7 +8,10 @@ const Kart = () => {
     const navigate = useNavigate();
     const kartContext = useContext(KartContext);
 
-    if (!kartContext || kartContext.product.length === 0) {return <article><title>Panier</title> <div>Panier vide</div></article>;}
+    //Si le panier est vide ça affiche un message et rien d'autre
+    if (!kartContext || kartContext.product.length === 0) {
+        return <article><title>Panier</title> <div>Panier vide</div></article>;
+    }
 
     return (
         <div className="kart">

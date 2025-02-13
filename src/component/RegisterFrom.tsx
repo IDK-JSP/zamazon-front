@@ -11,17 +11,19 @@ const RegisterForm: FC<{}> = ({}) => {
     const navigate = useNavigate();
     const emailContext = useContext(EmailContext);
 
-
+    //Fonction pour s'inscrire
     const handleRegister = () => {
         const data = {
             email: email,
             password: password
         }
+        // Comme pour le LogInForm, vérification des champs email et mot de passe et ajout d'un champ de vérification du mot de passe
         if (email && password != undefined && password === verifPassword) {
             postZamazon("/auth/register", data)
                 .then((message) => {
                     if (message === "User registered successfully!") {
                         navigate('/Shop')
+                        // Si l'inscription est réussie, on enregistre l'email dans un contexte
                         emailContext?.setEmail(email);
                     }else{
                         alert("Email déjà utilisé")
@@ -34,7 +36,6 @@ const RegisterForm: FC<{}> = ({}) => {
                     }
                 });
         }
-        console.log(emailContext?.email)
     }
     return (
         <div className={"register-form"}>
