@@ -77,6 +77,9 @@ const Payment: FC<{}> = ({}) => {
             calculatedTotal += product.price * kartContext.quantity[index];
         });
         setTotal(Number(calculatedTotal.toFixed(2)));
+        if (emailContext?.email && email !== emailContext?.email) {
+            setEmail(emailContext?.email);  // Met à jour l'email avec celui du context au premier rendu
+        }
     }, []);
 
     return (
@@ -85,8 +88,17 @@ const Payment: FC<{}> = ({}) => {
 
             <h2><u>Total à payé : {total}$
             </u></h2>
-
-            <input placeholder={"Votre e-mail"} value={email} onChange={e => setEmail(e.target.value)}/>
+            {
+                emailContext?.email !== "" ? (
+                    <p>E-mail utilisé : "{emailContext?.email}"</p>
+                ) : (
+                    <input
+                        placeholder="Votre e-mail"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}  // Met à jour l'email dans l'état
+                    />
+                )
+            }
             <button onClick={updateQuantity}>Valider le payment</button>
         </div>
     );

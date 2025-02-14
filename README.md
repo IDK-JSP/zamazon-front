@@ -1,24 +1,16 @@
-**Choses manquantes :**
+**Comment ça marche**
 
-* Favoris/Ajout à ma liste
-* Le profil (inscription mais je préfère attendre le back)
-* Le tri par catégorie dans "Découvrir"
-* La page "PeopleDetails" qui ne marche pas (j'ai plus le problème node, mais j'ai du mal avec l'utilisation des données
-* donc à travailler)
-* Un footer
-* Responsivité
+Création de compte
+Pour commencer, crée un compte sur la plateforme (aucun email valide nécessaire).
 
+Sélection des produits
+Accède à la page des produits et utilise la fonction de recherche pour trouver ce que tu souhaites. Sélectionne les produits qui t'intéressent et ajoute-les à ton panier.
 
-**Optimisation :**
+Validation de la commande
+Une fois ta sélection effectuée, rends-toi sur la page du panier pour vérifier les quantités et valider tes achats.
 
-* Le chargement de la page d'accueil n'est pas propre, l'ajout d'un loading serait bien.
-* Dans "Découvrir", lorsqu'une recherche est effectuée mais que l'input est vide, les catégories devraient pouvoir
-* réapparaître. Donc, l'utilisation d'un observable serait l'idéal.
-* Refecto certaine fonctionnalités (Les boutons de pages qui peuvent être des composants, etc...)
+Page de paiement
+Sur la page de paiement, entre l'email avec lequel tu t'es inscrit, puis valide ta commande.
 
-
-**Visuel :**
-
-* Refonte de la barre de recherche
-* Refonte de la page d'accueil (ajout de carousel, liste horizontale, etc.)
-* Ajout d'un logo et d'un nom
+Confirmation de la commande
+La commande sera passée. Pour consulter les détails de ta commande (total et ID de commande), rends-toi dans la page admin (note : cette page n'est pas sécurisée).
