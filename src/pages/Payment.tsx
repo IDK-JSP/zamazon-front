@@ -3,6 +3,7 @@ import {ProductItem as ProductType} from "../@types/productItem";
 import KartProduct from "../component/KartProduct";
 import {EmailContext, KartContext} from "../App";
 import {postZamazon, putZamazon} from "../api/api";
+import {useNavigate} from "react-router";
 
 
 const Payment: FC<{}> = ({}) => {
@@ -11,6 +12,8 @@ const Payment: FC<{}> = ({}) => {
     const kartContext = useContext(KartContext);
     const [orderId, setOrderId] = useState();
     const emailContext = useContext(EmailContext);
+    const navigate = useNavigate();
+
 
     // Fonction pour modifier la quantité du produit dans la base de données en fonction de la quantité présente dans le panier
     const updateQuantity = () => {
@@ -42,15 +45,16 @@ const Payment: FC<{}> = ({}) => {
                 setOrderId(response.order_id)
                 kartContext?.setProduct([]);
                 kartContext?.setQuantity([])
+                navigate("/Shop")
             } else {
                 console.error("Erreur : La réponse est vide.");
             }
         } catch (error) {
             console.error("Erreur lors de la création de la commande :", error);
         }
-        createOrdersContent();
+        //createOrdersContent();
     };
-    const createOrdersContent = () => {
+    /*const createOrdersContent = () => {
         kartContext?.product.forEach((p, index) => {
             const data = {
                 order_id: orderId, // L'id de la commande, peut être dynamique selon l'id de la commande créée
@@ -65,7 +69,7 @@ const Payment: FC<{}> = ({}) => {
                     console.error("Error while adding order content", error);
                 });
         });
-    };
+    };*/
 
     useEffect(() => {
         let calculatedTotal = 0;

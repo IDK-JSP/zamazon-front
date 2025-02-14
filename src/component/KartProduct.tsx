@@ -32,7 +32,7 @@ const KartProduct: FC<{ product: ProductType; quantity: number; productIndex: nu
     return (
         <div className="kart-product">
             <div className="left">
-                <img src="" alt="product" onClick={() => navigate(`/ProductDetails/${product.product_id}`)} />
+                <img src={product.poster_path} alt="product" onClick={() => navigate(`/ProductDetails/${product.product_id}`)} />
                 <div className="kart-write">
                     <h4>{product.product_name}</h4>
                     <article className={"quantity"}>
@@ -51,7 +51,7 @@ const KartProduct: FC<{ product: ProductType; quantity: number; productIndex: nu
             </div>
             <div className="right">
                 <button onClick={handleRemove}>X</button>
-                <h3>Total : {(product.price * selectedQuantity).toFixed(2)}$</h3>
+                <h3>Total : {(product.price * selectedQuantity).toFixed(2)} Vbouck</h3>
             </div>
         </div>
     );

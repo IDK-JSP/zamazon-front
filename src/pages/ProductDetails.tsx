@@ -11,6 +11,7 @@ const ProductDetails: FC<{}> = () => {
     const [product, setProduct] = useState<ProductType | undefined>(undefined);
     const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
 
+    //Va chercher les détails du produit dans la bdd, oui je pouvais le passer en props mais comme ça j'ai pas fait un endPoint pour rien
     const fetchData = async () => {
         try {
             const data = await getZamazon(`/products/${id}`);
@@ -39,8 +40,8 @@ const ProductDetails: FC<{}> = () => {
         <div className={"product-details"}>
             <title>{product.product_name}</title>
             <img
-                alt={`Image du produit : ${product?.product_name}`}
-                src={""}
+                alt={`Image de : ${product?.product_name}`}
+                src={product.poster_path}
                 className="product-image"
             />
             <article className={"product-details-write"}>
@@ -61,7 +62,7 @@ const ProductDetails: FC<{}> = () => {
                         )}
                     </select>
                 </aside>
-                <div>{product.price}$</div>
+                <div>{product.price} Vbouck</div>
                 <div>{product?.description}</div>
             </article>
 

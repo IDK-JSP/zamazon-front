@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
 import Research from "./pages/Recherche";
 import Recherche from "./pages/Recherche";
+import AudioPlayer from "./component/AudioPlayer";
 
 export const KartContext = createContext<KartContext | undefined>(undefined);
 export const EmailContext = createContext<EmailContext | undefined>(undefined);
@@ -42,6 +43,7 @@ function App() {
     const [email, setEmail] = useState<string>("");
     return (
         <div className="App">
+            <AudioPlayer />
             <BrowserRouter>
                 <KartContext.Provider value={{product, setProduct, quantity, setQuantity}}>
                     <EmailContext.Provider value={{email, setEmail}}>

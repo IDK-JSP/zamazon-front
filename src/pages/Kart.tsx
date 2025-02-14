@@ -21,7 +21,7 @@ const Kart = () => {
                 <title>Panier</title>
                 <div>
                     <img className={"gif"}
-                        src="https://media.tenor.com/vRea8pufu1gAAAAM/take-the-l-billie-eilish.gif"
+                        src="https://i.gifer.com/yB.gif"
                         alt="Gif humoristique de Fortnite"
                     />
                 </div>
