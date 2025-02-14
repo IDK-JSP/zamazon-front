@@ -45,7 +45,7 @@ const Research: FC<{}> = () => {
 
     return (
         <div className={"shop"}>
-            <title>Boutique</title>
+            <title>Recherche</title>
             <SearchBar
                 handleSearchResults={handleSearchResults}/> {/* Passer la fonction ici pour mettre à jour les produits */}
 

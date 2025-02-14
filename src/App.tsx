@@ -74,10 +74,9 @@ function App() {
                                         <Route path="/Research" element={<Recherche/>}/>
                                         <Route path="/Shop" element={<Shop/>}/>
                                         <Route path="/Kart" element={<Kart/>}/>
-                                        <Route path="/Admin" element={<Admin/>}/>
                                         <Route path="/Payment" element={<Payment/>}/>
                                         <Route path="/ProductDetails/:id" element={<ProductDetails/>}/>
-                                        <Route path="*" element={<Navigate to="/shop" replace/>}/>
+                                        <Route path="*" element={<Navigate to="/Register" replace/>}/>
                                     </Route>
                                 }
                             </Routes>
