@@ -23,6 +23,7 @@ const LogInForm: FC<{}> = ({}) => {
                     if (typeof (message)=== "string") {
                         // Si la connexion est réussie, on enregistre l'email dans un contexte
                         emailContext?.setEmail(email)
+                        emailContext?.setLoggedIn(true)
                         navigate('/Shop')
                     } else {
                         alert("Mauvais identifiants")

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2d38a2d-44b4-43b5-a4bc-00ea7702f325" name="Changes" comment="" />
+    <list default="true" id="f2d38a2d-44b4-43b5-a4bc-00ea7702f325" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/LogInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/LogInForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/RegisterFrom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/RegisterFrom.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +31,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/marti/Desktop/zamazon/zamazon-front",
+    "last_opened_file_path": "C:/Users/marti/Desktop/visiotheque",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,6 +58,7 @@
       <updated>1739348031278</updated>
       <workItem from="1739348032397" duration="28562000" />
       <workItem from="1739519947239" duration="121000" />
+      <workItem from="1739530598576" duration="7000" />
     </task>
     <servers />
   </component>

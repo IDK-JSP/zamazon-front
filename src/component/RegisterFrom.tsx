@@ -25,6 +25,7 @@ const RegisterForm: FC<{}> = ({}) => {
                         navigate('/Shop')
                         // Si l'inscription est réussie, on enregistre l'email dans un contexte
                         emailContext?.setEmail(email);
+                        emailContext?.setLoggedIn(true)
                     }else{
                         alert("Email déjà utilisé")
                     }
